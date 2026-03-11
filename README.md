@@ -1,52 +1,85 @@
-# Lab 1 – Terraform VM (DevSecOps)
+# DevSecOps Terraform Labs
 
-This repository contains Terraform infrastructure code for provisioning a secure Linux virtual machine in Google Cloud as part of the DevSecOps course.
+This repository contains Terraform infrastructure code developed as part of the DevSecOps course.
 
-## Infrastructure
+## Lab 1 – Google Cloud VM
 
-The Terraform configuration creates:
+Terraform infrastructure that provisions a secure Linux VM in Google Cloud.
 
-- A Linux VM (Ubuntu 22.04)
-- External IP address
-- Startup script for basic system hardening
-- Automatic snapshot backup policy
+### Infrastructure
 
-## Security Hardening
+* Ubuntu 22.04 VM
+* External IP address
+* Startup hardening script
+* Snapshot backup policy
 
-The VM uses a startup script that installs:
+### Security Hardening
 
-- UFW firewall
-- Fail2ban
-- Automatic security updates
+The startup script installs and configures:
 
-## CI Pipeline
+* UFW firewall
+* Fail2ban
+* Automatic security updates
 
-GitHub Actions runs a CI pipeline that performs:
+### CI Pipeline
 
-- Terraform format check
-- Infrastructure security scan (Trivy)
-- Terraform validation
+GitHub Actions pipeline performs:
+
+* Terraform format check
+* Terraform validation
+* Infrastructure security scan (Trivy)
+
+
+
+## Lab 2 – Hetzner Cloud Deployment
+
+Terraform infrastructure that provisions a VM in Hetzner Cloud.
+
+### Infrastructure
+
+* Ubuntu 22.04 VM
+* CX23 server type
+* Location: Helsinki
+* Startup script for server configuration
+
+### Terraform Output Example
+
+Server name:
+server_name = devsecops-lab
+
+To retrieve the server IP address, run:
+
+terraform output server_ip
+
+Example output:
+server_ip = "PUBLIC_IP"
+
+## Terraform Workflow
+
+terraform init
+terraform plan
+terraform apply
+terraform output
 
 ## Project Structure
 
 lab1-terraform
+│
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
 ├── startup.sh
+│
+├── hetzner
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+│
 ├── example.tfvars
 ├── README.md
-└── .github/workflows/terraform.yml
+└── .github/workflows
 
-
-## Usage
-
-Initialize Terraform:
-
-Validate configuration:
-
-Copy example variables file:
 
 ## Author
 
-Abdi – DevSecOps Lab 1
+Abdihakim – DevSecOps Labs
