@@ -1,4 +1,3 @@
-# main.tf
 terraform {
   required_providers {
     google = {
@@ -6,6 +5,7 @@ terraform {
       version = "~> 5.0"
     }
   }
+
 }
 
 provider "google" {
@@ -13,6 +13,7 @@ provider "google" {
   region  = var.region
 }
 
+# Linux VM
 resource "google_compute_instance" "vm" {
   name         = "${var.student_id}-lab1-vm"
   machine_type = "e2-micro"
@@ -28,7 +29,7 @@ resource "google_compute_instance" "vm" {
 
   network_interface {
     network = "default"
-    access_config {} # Ger VM:en en extern IP
+    access_config {}
   }
 
   metadata_startup_script = file("startup.sh")
@@ -40,4 +41,31 @@ resource "google_compute_instance" "vm" {
   }
 
   tags = ["lab1", "ssh"]
+}
+
+# Snapshot backup policy
+resource "google_compute_resource_policy" "daily_backup" {
+  name   = "${var.student_id}-daily-backup"
+  region = var.region
+
+  snapshot_schedule_policy {
+    schedule {
+      daily_schedule {
+        days_in_cycle = 1
+        start_time    = "03:00"
+      }
+    }
+
+    retention_policy {
+      max_retention_days    = 7
+      on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
+    }
+  }
+}
+
+# Attach snapshot policy to VM disk
+resource "google_compute_disk_resource_policy_attachment" "backup_attachment" {
+  name = google_compute_resource_policy.daily_backup.name
+  disk = google_compute_instance.vm.boot_disk[0].source
+  zone = "${var.region}-a"
 }

@@ -13,3 +13,9 @@ ufw --force enable
 dpkg-reconfigure -plow unattended-upgrades
 
 echo "Startup script completed at $(date)" > /var/log/startup-complete.log
+
+# Disable root login
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+systemctl restart ssh
+
+echo "Security hardening completed $(date)" > /var/log/hardening.log
