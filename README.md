@@ -122,11 +122,13 @@ Abdihakim – DevSecOps Course Labs
 
 2: Security scanning is configured to fail only on CRITICAL issues.
 HIGH findings such as public VM IP are allowed since SSH access is required for the lab.
-![alt text](image-1.png)
+![alt text](image-5.png)
 
 Terraform init
 ![alt text](image-4.png)
+
 Terraform validate
 ![alt text](image-3.png)
+
 Terraform plan
 ![alt text](image-2.png)
