@@ -66,6 +66,6 @@ resource "google_compute_resource_policy" "daily_backup" {
 # Attach snapshot policy to VM disk
 resource "google_compute_disk_resource_policy_attachment" "backup_attachment" {
   name = google_compute_resource_policy.daily_backup.name
-  disk = google_compute_instance.vm.boot_disk[0].source
+  disk = google_compute_instance.vm.name
   zone = "${var.region}-a"
 }
