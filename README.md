@@ -62,6 +62,17 @@ Daily automated disk snapshots.
 
 Snapshots are retained for 7 days and can be used to restore the VM in case of failure.
 
+## Deployment Result
+
+The Terraform infrastructure was successfully deployed.
+
+Terraform apply completed successfully and created the following resources:
+
+• Google Cloud VM instance  
+• Daily snapshot backup policy  
+• Disk resource policy attachment  
+
+The VM instance `abdihakim-lab1-vm` is running in zone `europe-north1-b`.
 
 # Lab 2 – Hetzner Cloud Deployment
 
@@ -131,4 +142,10 @@ Terraform validate
 ![alt text](image-3.png)
 
 Terraform plan
-![alt text](image-2.png)
+![alt text](image-2.png) 
+
+Terraform Apply
+![alt text](image-6.png)
+
+Terraform output
+![alt text](image-7.png)
