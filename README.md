@@ -74,37 +74,6 @@ Terraform apply completed successfully and created the following resources:
 
 The VM instance `abdihakim-lab1-vm` is running in zone `europe-north1-b`.
 
-# Lab 2 – Hetzner Cloud Deployment
-
-Terraform infrastructure that provisions a virtual machine in Hetzner Cloud.
-
-## Infrastructure
-
-• Ubuntu 22.04 VM  
-• Server type: CX23  
-• Location: Helsinki  
-• Startup script for server configuration  
-
-## Terraform Output Example
-
-Server name:
-
-server_name = devsecops-lab
-
-Retrieve the server IP:
-
-terraform output server_ip
-
-Example output:
-server_ip = "PUBLIC_IP"
-
-## Terraform Workflow
-
-terraform init
-terraform plan
-terraform apply
-terraform output
-
 ## Project Structure
 
 lab1-terraform
@@ -112,13 +81,7 @@ lab1-terraform
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├── startup.sh
-│
-├── hetzner
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-│
+├── startup.sh│
 ├── example.tfvars
 ├── README.md
 └── .github/workflows
