@@ -91,11 +91,7 @@ lab1-terraform
 
 Abdihakim – DevSecOps Course Labs
 
-
-## Security Scan
-The Trivy IaC scan is configured to fail only on **CRITICAL** findings.
-HIGH findings such as public VM IP (GCP-0031) are allowed since a public IP is required for SSH access in this lab environment.
-
+![alt text](image-9.png)
 ![alt text](image.png)
 
 2: CI Pipeline Runs
