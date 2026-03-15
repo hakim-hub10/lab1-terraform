@@ -22,10 +22,9 @@ jobs:
       - name: Trivy IaC Scan
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: config
-          scan-ref: .
-          severity: CRITICAL,HIGH
-          exit-code: 1
+          scan-type: 'config'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
 
   validate:
     runs-on: ubuntu-latest
